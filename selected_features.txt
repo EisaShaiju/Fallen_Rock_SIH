@@ -1,0 +1,15 @@
+runout_distance
+kinetic_energy
+height_energy_interaction
+seeder_height
+slope_angle
+api_7d
+api_30d
+rain_7d_mm
+impact_position
+slope_angle_roughness
+rain_30d_mm
+vibration_events_7d
+rain_3d_mm
+energy_distance_ratio
+rain_temp_interaction

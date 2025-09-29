@@ -1,0 +1,16 @@
+feature,importance
+runout_distance,0.5082931
+height_energy_interaction,0.092976905
+api_7d,0.086174265
+api_30d,0.0768384
+slope_angle,0.053729013
+kinetic_energy,0.051015925
+slope_angle_roughness,0.03782488
+rain_7d_mm,0.036848035
+seeder_height,0.036021274
+vibration_events_7d,0.01242169
+impact_position,0.0039365874
+energy_distance_ratio,0.0020568846
+rain_30d_mm,0.0009335864
+rain_3d_mm,0.00078076037
+rain_temp_interaction,0.00014869061
