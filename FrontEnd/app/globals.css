@@ -1,0 +1,308 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+
+
+
+:root {
+/* Enhanced color scheme for professional mining dashboard */
+--background: oklch(96% 0.03 80); /* Light sand/beige background */
+--foreground: oklch(25% 0.08 60); /* Dark, warm brown for text */
+--card: oklch(100% 0 0); /* Pure white for clean cards */
+--card-foreground: oklch(25% 0.08 60); /* Dark, warm brown text on cards */
+--popover: oklch(100% 0 0); /* White popover background */
+--popover-foreground: oklch(25% 0.08 60); /* Dark brown popover text */
+
+/* Mining-specific color palette */
+--primary: oklch(55% 0.15 60); /* Rich, medium-dark tan for primary actions */
+--primary-foreground: oklch(98% 0.02 80); /* Light beige text on primary */
+--secondary: oklch(85% 0.06 75); /* Lighter, muted tan for secondary elements */
+--secondary-foreground: oklch(30% 0.1 60); /* Darker tan text on secondary */
+--muted: oklch(92% 0.04 80); /* Slightly off-white/beige muted background */
+--muted-foreground: oklch(55% 0.06 70); /* Medium gray-brown muted text */
+--accent: oklch(65% 0.2 50); /* Vibrant terracotta for highlights */
+--accent-foreground: oklch(98% 0.02 80); /* Light beige text on accent */
+
+/* Safety-critical colors */
+--success: oklch(50% 0.16 145); /* Clear, earthy green for safe conditions */
+--success-foreground: oklch(100% 0 0); /* White text on success */
+--warning: oklch(70% 0.2 85); /* Bright amber for warnings */
+--warning-foreground: oklch(20% 0.07 60); /* Dark brown text on warning */
+--destructive: oklch(58% 0.23 25); /* Strong, clear red for critical alerts */
+--destructive-foreground: oklch(100% 0 0); /* White text on destructive */
+
+--border: oklch(88% 0.05 80); /* Subtle light brown border color */
+--input: oklch(100% 0 0); /* White input background */
+--ring: oklch(55% 0.15 60 / 0.4); /* Primary tan focus ring with transparency */
+
+/* Chart colors for data visualization */
+--chart-1: oklch(55% 0.15 60); /* Rich Tan */
+--chart-2: oklch(65% 0.2 50); /* Terracotta */
+--chart-3: oklch(50% 0.16 145); /* Earthy Green */
+--chart-4: oklch(70% 0.2 85); /* Bright Amber */
+--chart-5: oklch(58% 0.23 25); /* Strong Red */
+
+--radius: 0.75rem; /* Slightly larger radius for modern look */
+
+/* Sidebar styling */
+--sidebar: oklch(94% 0.035 80); /* Slightly darker beige for the sidebar */
+--sidebar-foreground: oklch(25% 0.08 60); /* Dark brown sidebar text */
+--sidebar-primary: oklch(85% 0.06 75); /* Primary sidebar background */
+--sidebar-primary-foreground: oklch(30% 0.1 60); /* Dark tan sidebar primary text */
+--sidebar-accent: oklch(55% 0.15 60 / 0.1); /* Subtle tan accent background */
+--sidebar-accent-foreground: oklch(45% 0.14 60); /* Darker tan accent text */
+--sidebar-border: oklch(88% 0.05 80); /* Sidebar border */
+--sidebar-ring: oklch(55% 0.15 60 / 0.4); /* Sidebar focus ring */
+}
+
+.dark {
+  /* Enhanced dark mode for 24/7 monitoring environments */
+  --background: oklch(0.08 0 0); /* Very dark background for reduced eye strain */
+  --foreground: oklch(0.95 0 0); /* Light text */
+  --card: oklch(0.12 0 0); /* Dark card background */
+  --card-foreground: oklch(0.95 0 0); /* Light card text */
+  --popover: oklch(0.08 0 0); /* Dark popover background */
+  --popover-foreground: oklch(0.95 0 0); /* Light popover text */
+
+  --primary: oklch(0.6 0.18 220); /* Brighter blue for dark mode */
+  --primary-foreground: oklch(0.08 0 0); /* Dark text on primary */
+  --secondary: oklch(0.65 0.15 200); /* Brighter cyan for dark mode */
+  --secondary-foreground: oklch(0.08 0 0); /* Dark text on secondary */
+  --muted: oklch(0.18 0 0); /* Dark muted background */
+  --muted-foreground: oklch(0.65 0 0); /* Light gray muted text */
+  --accent: oklch(0.7 0.2 270); /* Brighter indigo for dark mode */
+  --accent-foreground: oklch(0.08 0 0); /* Dark accent text */
+
+  --success: oklch(0.6 0.15 140); /* Brighter green for dark mode */
+  --success-foreground: oklch(0.08 0 0); /* Dark text on success */
+  --warning: oklch(0.75 0.2 85); /* Brighter amber for dark mode */
+  --warning-foreground: oklch(0.08 0 0); /* Dark text on warning */
+  --destructive: oklch(0.65 0.22 25); /* Brighter red for dark mode */
+  --destructive-foreground: oklch(0.95 0 0); /* Light text on destructive */
+
+  --border: oklch(0.2 0 0); /* Dark border */
+  --input: oklch(0.18 0 0); /* Dark input background */
+  --ring: oklch(0.6 0.18 220 / 0.4); /* Brighter focus ring */
+
+  --chart-1: oklch(0.6 0.18 220); /* Brighter chart colors for dark mode */
+  --chart-2: oklch(0.65 0.15 200);
+  --chart-3: oklch(0.6 0.15 140);
+  --chart-4: oklch(0.75 0.2 85);
+  --chart-5: oklch(0.65 0.22 25);
+
+  --sidebar: oklch(0.1 0 0); /* Dark sidebar */
+  --sidebar-foreground: oklch(0.95 0 0); /* Light sidebar text */
+  --sidebar-primary: oklch(0.6 0.18 220); /* Primary sidebar background */
+  --sidebar-primary-foreground: oklch(0.08 0 0); /* Dark sidebar primary text */
+  --sidebar-accent: oklch(0.6 0.18 220 / 0.15); /* Subtle accent background */
+  --sidebar-accent-foreground: oklch(0.6 0.18 220); /* Primary accent text */
+  --sidebar-border: oklch(0.2 0 0); /* Dark sidebar border */
+  --sidebar-ring: oklch(0.6 0.18 220 / 0.4); /* Brighter sidebar focus ring */
+}
+
+@theme inline {
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  /* Enhanced typography and spacing for professional dashboard */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold tracking-tight;
+  }
+
+  h1 {
+    @apply text-2xl lg:text-3xl;
+  }
+
+  h2 {
+    @apply text-xl lg:text-2xl;
+  }
+
+  h3 {
+    @apply text-lg lg:text-xl;
+  }
+
+  p {
+    @apply leading-relaxed;
+  }
+
+  /* Custom scrollbar for better UX */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full hover:bg-muted-foreground/20;
+  }
+}
+
+@layer components {
+  /* Custom component styles for mining dashboard */
+  .status-indicator {
+    @apply inline-flex items-center gap-1.5 px-2 py-1 rounded-full text-xs font-medium;
+  }
+
+  .status-online {
+    @apply bg-success/10 text-success border border-success/20;
+  }
+
+  .status-warning {
+    @apply bg-warning/10 text-warning border border-warning/20;
+  }
+
+  .status-critical {
+    @apply bg-destructive/10 text-destructive border border-destructive/20;
+  }
+
+  .status-offline {
+    @apply bg-muted text-muted-foreground border border-border;
+  }
+
+  .sensor-pulse {
+    @apply animate-pulse;
+    animation-duration: 2s;
+  }
+
+  .data-card {
+    @apply bg-card border border-border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-200;
+  }
+
+  .metric-value {
+    @apply text-2xl font-bold tabular-nums;
+  }
+
+  .metric-label {
+    @apply text-sm text-muted-foreground font-medium;
+  }
+
+  .alert-critical {
+    @apply border-l-4 border-l-destructive bg-destructive/5;
+  }
+
+  .alert-warning {
+    @apply border-l-4 border-l-warning bg-warning/5;
+  }
+
+  .alert-info {
+    @apply border-l-4 border-l-primary bg-primary/5;
+  }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, oklch(0.99 0 0) 0%, oklch(0.97 0 0) 100%);
+  }
+
+  .dark .gradient-bg {
+    background: linear-gradient(135deg, oklch(0.08 0 0) 0%, oklch(0.1 0 0) 100%);
+  }
+}
+
+@layer utilities {
+  /* Utility classes for enhanced UX */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  .glass-effect {
+    @apply bg-background/80 backdrop-blur-sm border border-border/50;
+  }
+}
