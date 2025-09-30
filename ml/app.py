@@ -127,9 +127,9 @@ def load_model():
     
     try:
         # Model file paths
-        model_path = "xgboost_hazard_model.pkl"
-        scaler_path = "feature_scaler.pkl"
-        features_path = "selected_features.txt"
+        model_path = "models/xgboost_hazard_model.pkl"
+        scaler_path = "models/feature_scaler.pkl"
+        features_path = "models/selected_features.txt"
         
         # Check if files exist
         if not os.path.exists(model_path):

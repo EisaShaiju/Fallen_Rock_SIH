@@ -1,148 +1,278 @@
-# Rockfall Hazard Prediction API
+# SIH ML Project# Rockfall Hazard Prediction API
 
-A FastAPI-based web service for predicting rockfall hazard scores using machine learning. This project provides real-time risk assessment for geological monitoring and infrastructure safety.
+A comprehensive Smart India Hackathon project with machine learning and web development components.A FastAPI-based web service for predicting rockfall hazard scores using machine learning. This project provides real-time risk assessment for geological monitoring and infrastructure safety.
 
-## 🚀 Quick Start
+## 🤖 ML Component - Rockfall Hazard Prediction API## 🚀 Quick Start
 
-### 1. Install Dependencies
+The ML component provides a FastAPI-based web service for predicting rockfall hazard scores using machine learning.### 1. Install Dependencies
 
-```bash
+### 🚀 Quick Start```bash
+
 pip install -r requirements_api.txt
-```
 
-### 2. Start the API Server
+#### 1. Navigate to ML Directory```
 
 ```bash
-python app.py
+
+cd ml### 2. Start the API Server
+
 ```
 
-### 3. Access the API
+````bash
 
-- **API Base URL**: `http://localhost:8000`
-- **Interactive Documentation**: `http://localhost:8000/docs`
-- **Alternative Docs**: `http://localhost:8000/redoc`
+#### 2. Install Dependenciespython app.py
+
+```bash```
+
+pip install -r requirements_api.txt
+
+```### 3. Access the API
+
+
+
+#### 3. Start the API- **API Base URL**: `http://localhost:8000`
+
+```bash- **Interactive Documentation**: `http://localhost:8000/docs`
+
+python app.py- **Alternative Docs**: `http://localhost:8000/redoc`
+
+````
 
 ## 📊 Model Overview
 
+The API will start running on `http://localhost:8000`
+
 Our XGBoost regression model predicts rockfall hazard scores by combining:
 
+### 📡 API Usage
+
 - **Target Variable**: `hazard_score = risk_probability_normalized × risk_severity_normalized`
-- **Input Features**: 27 geological, environmental, and monitoring parameters
-- **Selected Features**: Top 15 most predictive features using correlation-based selection
-- **Model Architecture**: XGBoost Regressor with stratified sampling and cross-validation
-- **Performance**: ~87% accuracy (R²) with realistic overfitting prevention
+
+#### Health Check- **Input Features**: 27 geological, environmental, and monitoring parameters
+
+````bash- **Selected Features**: Top 15 most predictive features using correlation-based selection
+
+curl http://localhost:8000/health- **Model Architecture**: XGBoost Regressor with stratified sampling and cross-validation
+
+```- **Performance**: ~87% accuracy (R²) with realistic overfitting prevention
+
 - **Output Range**: 0.0 (minimal risk) to 1.0 (critical risk)
 
-## 🎯 Risk Assessment Categories
+#### Single Prediction
 
-| Hazard Score | Risk Level | Action Required              |
-| ------------ | ---------- | ---------------------------- |
-| 0.0 - 0.2    | Very Low   | ✅ Normal operations         |
-| 0.2 - 0.4    | Low        | ⚠️ Continue monitoring       |
-| 0.4 - 0.6    | Medium     | 🔶 Enhanced monitoring       |
-| 0.6 - 0.8    | High       | 🔥 Prepare countermeasures   |
-| 0.8 - 1.0    | Critical   | 🚨 Immediate action required |
+```bash## 🎯 Risk Assessment Categories
 
-## 📁 Project Structure
+curl -X POST "http://localhost:8000/predict" \
 
-```
-sih_ml_part/
-├── app.py                              # 🚀 FastAPI web application
-├── test_api.py                         # 🧪 API testing script
-├── quick_batch_test.py                 # ⚡ Quick batch testing
-├── batch_prediction_input.json         # 📄 Example batch input
-├── API_DOCUMENTATION.md               # 📖 Detailed API docs
-├── requirements_api.txt               # 📦 API dependencies
-├── xgboost_hazard_model.pkl           # 🤖 Trained model
-├── feature_scaler.pkl                 # 📐 Feature preprocessing
-├── selected_features.txt              # 📋 Selected features list
-└── README.md                          # 📚 This file
-```
+     -H "Content-Type: application/json" \| Hazard Score | Risk Level | Action Required              |
 
-## 🔌 API Endpoints
+     -d '{| ------------ | ---------- | ---------------------------- |
 
-### 1. Health Check
+       "slope_angle": 45.5,| 0.0 - 0.2    | Very Low   | ✅ Normal operations         |
+
+       "slope_roughness": 8.2,| 0.2 - 0.4    | Low        | ⚠️ Continue monitoring       |
+
+       "seeder_height": 35.0,| 0.4 - 0.6    | Medium     | 🔶 Enhanced monitoring       |
+
+       "aspect_sin": 0.8,| 0.6 - 0.8    | High       | 🔥 Prepare countermeasures   |
+
+       "aspect_cos": 0.6,| 0.8 - 1.0    | Critical   | 🚨 Immediate action required |
+
+       "curvature": -0.02,
+
+       "local_relief": 25.5,## 📁 Project Structure
+
+       "roughness_m": 5.5,
+
+       "roughness_l": 7.8,```
+
+       "kinetic_energy": 250.0,sih_ml_part/
+
+       "impact_position": 30.5,├── app.py                              # 🚀 FastAPI web application
+
+       "runout_distance": 45.0,├── test_api.py                         # 🧪 API testing script
+
+       "rain_1d_mm": 5.2,├── quick_batch_test.py                 # ⚡ Quick batch testing
+
+       "rain_3d_mm": 12.8,├── batch_prediction_input.json         # 📄 Example batch input
+
+       "rain_7d_mm": 18.5,├── API_DOCUMENTATION.md               # 📖 Detailed API docs
+
+       "rain_30d_mm": 45.2,├── requirements_api.txt               # 📦 API dependencies
+
+       "api_7d": 15.8,├── xgboost_hazard_model.pkl           # 🤖 Trained model
+
+       "api_30d": 28.5,├── feature_scaler.pkl                 # 📐 Feature preprocessing
+
+       "temp_mean_7d_c": 8.5,├── selected_features.txt              # 📋 Selected features list
+
+       "temp_min_7d_c": 2.1,└── README.md                          # 📚 This file
+
+       "temp_max_7d_c": 15.2,```
+
+       "freeze_thaw_7d": 2.0,
+
+       "vibration_events_7d": 5,## 🔌 API Endpoints
+
+       "vibration_rms_24h": 0.025,
+
+       "disp_rate_mm_day": 0.8,### 1. Health Check
+
+       "disp_accel_mm_day2": 0.05,
+
+       "pore_pressure_kpa": 48.5,```bash
+
+       "pore_trend_kpa_day": 0.5,GET /health
+
+       "strain_rate_micro": 0.25```
+
+     }'
+
+```Check if the API and model are running properly.
+
+
+
+#### Interactive Documentation### 2. Model Information
+
+Visit `http://localhost:8000/docs` for interactive API documentation.
 
 ```bash
-GET /health
-```
 
-Check if the API and model are running properly.
+### 📊 API ResponseGET /model_info
 
-### 2. Model Information
+````
 
-```bash
-GET /model_info
-```
+The API returns predictions in this format:
 
-Get details about the loaded model and features.
+````jsonGet details about the loaded model and features.
 
-### 3. Single Prediction
+{
 
-```bash
-POST /predict
-```
+  "hazard_score": 0.7342,### 3. Single Prediction
+
+  "risk_level": "High",
+
+  "confidence": "High",```bash
+
+  "timestamp": "2025-09-30T10:30:15"POST /predict
+
+}```
+
+````
 
 Predict hazard score for one location.
 
+### 🎯 Risk Levels
+
 ### 4. Batch Prediction
 
-```bash
-POST /predict_batch
-```
+| Hazard Score | Risk Level | Action Required |
 
-Predict hazard scores for multiple locations simultaneously.
+|--------------|------------|-----------------|```bash
+
+| 0.0 - 0.2 | Very Low | ✅ Normal operations |POST /predict_batch
+
+| 0.2 - 0.4 | Low | ⚠️ Continue monitoring |```
+
+| 0.4 - 0.6 | Medium | 🔶 Enhanced monitoring |
+
+| 0.6 - 0.8 | High | 🔥 Prepare countermeasures |Predict hazard scores for multiple locations simultaneously.
+
+| 0.8 - 1.0 | Critical | 🚨 Immediate action required |
 
 ## 💻 Usage Examples
 
+### 🔧 Troubleshooting
+
 ### Single Prediction with curl
 
-```bash
-curl -X POST "http://localhost:8000/predict" \
-     -H "Content-Type: application/json" \
-     -d '{
-       "slope_angle": 45.5,
-       "slope_roughness": 8.2,
-       "seeder_height": 35.0,
+#### API Won't Start
+
+- Ensure you're in the `ml` directory: `cd ml````bash
+
+- Install dependencies: `pip install -r requirements_api.txt`curl -X POST "http://localhost:8000/predict" \
+
+- Check if port 8000 is available -H "Content-Type: application/json" \
+
+  -d '{
+
+#### Model Loading Issues "slope_angle": 45.5,
+
+- Verify model files exist in `ml/models/` directory "slope_roughness": 8.2,
+
+- Check file permissions "seeder_height": 35.0,
+
        "aspect_sin": 0.8,
-       "aspect_cos": 0.6,
-       "curvature": -0.02,
-       "local_relief": 25.5,
+
+#### Connection Issues "aspect_cos": 0.6,
+
+- Confirm API is running: `curl http://localhost:8000/health` "curvature": -0.02,
+
+- Check firewall settings "local_relief": 25.5,
+
        "roughness_m": 5.5,
-       "roughness_l": 7.8,
+
+--- "roughness_l": 7.8,
+
        "kinetic_energy": 250.0,
-       "impact_position": 30.5,
+
+## 🌐 Web Development Component "impact_position": 30.5,
+
        "runout_distance": 45.0,
-       "rain_1d_mm": 5.2,
+
+_[Web development documentation will be added here]_ "rain_1d_mm": 5.2,
+
        "rain_3d_mm": 12.8,
-       "rain_7d_mm": 18.5,
+
+--- "rain_7d_mm": 18.5,
+
        "rain_30d_mm": 45.2,
-       "api_7d": 15.8,
+
+## 📋 Project Structure "api_7d": 15.8,
+
        "api_30d": 28.5,
-       "temp_mean_7d_c": 8.5,
-       "temp_min_7d_c": 2.1,
-       "temp_max_7d_c": 15.2,
-       "freeze_thaw_7d": 2.0,
-       "vibration_events_7d": 5,
-       "vibration_rms_24h": 0.025,
-       "disp_rate_mm_day": 0.8,
-       "disp_accel_mm_day2": 0.05,
-       "pore_pressure_kpa": 48.5,
+
+````"temp_mean_7d_c": 8.5,
+
+sih_ml_part/       "temp_min_7d_c": 2.1,
+
+├── ml/                    # Machine Learning API       "temp_max_7d_c": 15.2,
+
+│   ├── app.py            # FastAPI application       "freeze_thaw_7d": 2.0,
+
+│   ├── models/           # Trained ML models       "vibration_events_7d": 5,
+
+│   ├── src/              # Source code       "vibration_rms_24h": 0.025,
+
+│   └── data/             # Datasets       "disp_rate_mm_day": 0.8,
+
+└── [webdev components to be added]       "disp_accel_mm_day2": 0.05,
+
+```       "pore_pressure_kpa": 48.5,
+
        "pore_trend_kpa_day": 0.5,
-       "strain_rate_micro": 0.25
+
+## 🚀 Getting Started       "strain_rate_micro": 0.25
+
      }'
-```
+
+1. **For ML API**: Navigate to `ml/` directory and follow ML component instructions above```
+
+2. **For Web Development**: *[Instructions will be added when webdev component is ready]*
 
 **Response:**
 
+## 📄 License
+
 ```json
-{
+
+This project is developed for Smart India Hackathon.{
   "hazard_score": 0.7342,
   "risk_level": "High",
   "confidence": "High",
   "timestamp": "2025-09-29T10:30:15"
 }
-```
+````
 
 ### Batch Prediction with Python
 

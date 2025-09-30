@@ -31,7 +31,7 @@ from sklearn.feature_selection import SelectKBest, f_regression, RFE
 from sklearn.ensemble import RandomForestRegressor
 
 # Feature engineering
-from feature_engineering import RockfallFeatureEngineer
+from ..data_processing.feature_engineering import RockfallFeatureEngineer
 
 class XGBoostHazardPredictor:
     """

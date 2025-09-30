@@ -13,9 +13,9 @@ Usage:
 
 import os
 import sys
-from data_cleaning import RockfallDataCleaner
-from feature_engineering import RockfallFeatureEngineer
-from xgboost_hazard_model import XGBoostHazardPredictor
+from data_processing.data_cleaning import RockfallDataCleaner
+from data_processing.feature_engineering import RockfallFeatureEngineer
+from models.xgboost_hazard_model import XGBoostHazardPredictor
 
 def run_complete_pipeline():
     """
@@ -25,9 +25,9 @@ def run_complete_pipeline():
     print("="*60)
     
     # File paths
-    raw_data_file = "Rock_fall_dataset - advanced_rockfall_dataset.csv"
-    cleaned_data_file = "cleaned_rockfall_dataset.csv"
-    engineered_data_file = "engineered_rockfall_dataset.csv"
+    raw_data_file = "../data/raw/Rock_fall_dataset - advanced_rockfall_dataset.csv"
+    cleaned_data_file = "../data/processed/cleaned_rockfall_dataset.csv"
+    engineered_data_file = "../data/processed/engineered_rockfall_dataset.csv"
     
     # Check if raw data exists
     if not os.path.exists(raw_data_file):
